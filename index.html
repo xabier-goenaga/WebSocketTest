@@ -32,7 +32,7 @@
             let send = response - date;
             let recieve = actual - response;
 
-            let latency = `latency total ${total}, send: ${send}, recieve: ${recieve}`
+            let latency = `latency total ${total}ms, send: ${send}ms, recieve: ${recieve}ms`
 
             document.getElementById('messages').innerHTML +=
                 'Message from server: ' + j.message + "; " + latency + "<br>";
@@ -59,7 +59,7 @@
         let currentTest = 0;
         function runAutomateTest() {
             console.log("running test with " + nTests + " elements")
-            sendAutomateTestMessage
+            sendAutomateTestMessage()
         }
 
         function sendAutomateTestMessage() {
@@ -72,7 +72,7 @@
                 return;
             else
                 setTimeout(() => {
-                    sendAutomateTestMessage
+                    sendAutomateTestMessage()
                 }, 100);
         }
 
