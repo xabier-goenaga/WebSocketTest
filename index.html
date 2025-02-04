@@ -22,7 +22,7 @@
             let j = JSON.parse(event.data)
             console.log(j)
             document.getElementById('messages').innerHTML +=
-                'Message from server: ' + event.data + "<br>";
+                'Message from server: ' + j.message + "<br>";
         };
 
         webSocket.addEventListener("open", () => {
