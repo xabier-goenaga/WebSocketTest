@@ -13,6 +13,8 @@
         <input type="submit" value="Send">
     </form>
 
+    <button onclick="runAutomateTest()">run automate test</button>
+
     <div id="messages"></div>
 
     <script>
@@ -45,6 +47,18 @@
             webSocket.send(data)
             inputMessage.value = ""
             event.preventDefault();
+        }
+
+        function sendMessageText(testMsg) {
+            var inputMessage = document.getElementById('message')
+            let data = `{"message": "${testMsg}", "date": ${Date.now()}}`;
+            webSocket.send(data)
+        }
+
+        function runAutomateTest() {
+            for (let i = 0; i < 1000; i++) {
+                sendMessageText("Msg nº " + i);
+            }
         }
 
         document.getElementById('input-form').addEventListener('submit', sendMessage);
