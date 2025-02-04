@@ -56,9 +56,23 @@
         }
 
         function runAutomateTest() {
-            for (let i = 0; i < 1000; i++) {
-                sendMessageText("Msg nº " + i);
-            }
+            const nTests = 1000;
+            let currentTest = 0;
+            sendAutomateTestMessage
+        }
+
+        function sendAutomateTestMessage() {
+
+            sendMessageText("Msg nº " + currentTest);
+
+            currentTest++;
+
+            if (currentTest > nTests)
+                return;
+            else
+                setTimeout(() => {
+                    sendAutomateTestMessage
+                }, 100);
         }
 
         document.getElementById('input-form').addEventListener('submit', sendMessage);
