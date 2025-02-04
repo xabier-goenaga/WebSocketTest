@@ -1,4 +1,7 @@
 const express = require('express')
+const ip = require('ip');
+
+console.log("runnin on ip " + ip.address())
 
 const webserver = express()
     .use((req, res) =>

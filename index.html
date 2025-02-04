@@ -5,6 +5,8 @@
 </head>
 
 <body>
+    <p>Page IP:</p>
+    <p id="ip-address"></p>
     <form id="input-form">
         <label for="message">Enter Message:</label>
         <input type="text" id="message" name="message"><br><br>
@@ -29,7 +31,7 @@
             let latency = `latency total ${total}, send: ${send}, recieve: ${recieve}`
 
             document.getElementById('messages').innerHTML +=
-                'Message from server: ' + j.message + "; " + latency +"<br>";
+                'Message from server: ' + j.message + "; " + latency + "<br>";
         };
 
         webSocket.addEventListener("open", () => {
@@ -45,6 +47,16 @@
         }
 
         document.getElementById('input-form').addEventListener('submit', sendMessage);
+
+        fetch("https://api.ipify.org?format=json")
+            .then(response => response.json())
+            .then(data => {
+                // Display the IP address on the screen
+                document.getElementById("ip-address").textContent = data.ip;
+            })
+            .catch(error => {
+                console.error("Error fetching IP address:", error);
+            });
     </script>
 </body>
 
