@@ -1,4 +1,5 @@
 <html>
+<title>Cool webSocket test</title>
 
 <head>
 </head>
@@ -9,23 +10,30 @@
         <input type="text" id="message" name="message"><br><br>
         <input type="submit" value="Send">
     </form>
+
     <div id="messages"></div>
+
     <script>
         const webSocket = new WebSocket('ws://localhost:443/');
+
         webSocket.onmessage = (event) => {
             console.log(event)
             document.getElementById('messages').innerHTML +=
                 'Message from server: ' + event.data + "<br>";
         };
+
         webSocket.addEventListener("open", () => {
             console.log("We are connected");
         });
+
         function sendMessage(event) {
             var inputMessage = document.getElementById('message')
-            webSocket.send(inputMessage.value)
+            let data = `{message: ${inputMessage.value}, date: ${Date.now()}}`;
+            webSocket.send(data)
             inputMessage.value = ""
             event.preventDefault();
         }
+
         document.getElementById('input-form').addEventListener('submit', sendMessage);
     </script>
 </body>

@@ -18,11 +18,12 @@ sockserver.on('connection', ws => {
 
     ws.on('message', data => {
         sockserver.clients.forEach(client => {
+            console.log(data)
             console.log(`distributing message: ${data}`)
-            client.send(`${data}`)
+            client.send(`Recievec ${data}, but 😎${data}😎 is cooler`)
         })
     })
-    
+
     ws.onerror = function () {
         console.log('websocket error')
     }
