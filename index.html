@@ -50,7 +50,6 @@
         }
 
         function sendMessageText(testMsg) {
-            var inputMessage = document.getElementById('message')
             let data = `{"message": "${testMsg}", "date": ${Date.now()}}`;
             webSocket.send(data)
         }
@@ -58,11 +57,12 @@
         const nTests = 1000;
         let currentTest = 0;
         function runAutomateTest() {
+            console.log("running test with " + nTests + " elements")
             sendAutomateTestMessage
         }
 
         function sendAutomateTestMessage() {
-
+            console.log("Starting msg " + currentTest);
             sendMessageText("Msg nº " + currentTest);
 
             currentTest++;
