@@ -17,15 +17,11 @@ sockserver.on('connection', ws => {
     ws.on('close', () => console.log('Client has disconnected!'))
 
     ws.on('message', data => {
+        let j = JSON.parse(data)
+        let d = `{"message": "Recievec ${j.message}, but 😎${j.message}😎 is cooler", "date": ${j.date}, "response": ${Date.now()}}`;
         sockserver.clients.forEach(client => {
-            console.log(data)
-            let j = JSON.parse(data)
-            console.log(j)
-            let dd = j.date;
-            console.log(dd)
-            let d = `{"message": "Recievec ${j.message}, but 😎${j.message}😎 is cooler", "date": ${dd}, "response": ${Date.now()}}`;
-            console.log(`distributing message: ${d}`)
             client.send(d)
+            console.log(`distributing message: ${d}`)
         })
     })
 

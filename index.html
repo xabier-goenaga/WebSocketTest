@@ -17,8 +17,6 @@
         const webSocket = new WebSocket('ws://localhost:443/');
 
         webSocket.onmessage = (event) => {
-            console.log(event)
-            console.log(event.data)
             let j = JSON.parse(event.data)
             let date = j.date;
             let response = j.date;
@@ -28,10 +26,10 @@
             let send = response - date;
             let recieve = actual - response;
 
-            console.log(`latency total ${total}, send: ${send}, recieve: ${recieve}`)
+            let latency = `latency total ${total}, send: ${send}, recieve: ${recieve}`
 
             document.getElementById('messages').innerHTML +=
-                'Message from server: ' + j.message + "<br>";
+                'Message from server: ' + j.message + "; " + latency +"<br>";
         };
 
         webSocket.addEventListener("open", () => {
