@@ -10,7 +10,8 @@ const webserver = express()
     .listen(3000, () => console.log(`Listening on ${3000}`))
 
 const { WebSocketServer } = require('ws')
-const sockserver = new WebSocketServer({ port: 443 })
+// const sockserver = new WebSocketServer({ port: 443 })
+const sockserver = new WebSocketServer({ host: "91.126.76.46", port: 443 })
 
 sockserver.on('connection', ws => {
     console.log('New client connected!')
