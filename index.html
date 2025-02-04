@@ -16,8 +16,8 @@
     <div id="messages"></div>
 
     <script>
-        // const webSocket = new WebSocket('ws://localhost:443/');
-        const webSocket = new WebSocket('wss://10.0.2.64:443/');
+        const webSocket = new WebSocket('wss://localhost:443/');
+        // const webSocket = new WebSocket('wss://10.0.2.64:443/');
 
         webSocket.onmessage = (event) => {
             let j = JSON.parse(event.data)
