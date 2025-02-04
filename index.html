@@ -22,10 +22,11 @@
         // const webSocket = new WebSocket('wss://10.0.2.64:443/');
 
         webSocket.onmessage = (event) => {
+            let actual = Date.now()
+            
             let j = JSON.parse(event.data)
             let date = j.date;
             let response = j.date;
-            let actual = Date.now()
 
             let total = actual - date;
             let send = response - date;
