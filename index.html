@@ -28,7 +28,7 @@
 
         function sendMessage(event) {
             var inputMessage = document.getElementById('message')
-            let data = `{message: ${inputMessage.value}, date: ${Date.now()}}`;
+            let data = `val = {message: ${inputMessage.value}, date: ${Date.now()}}`;
             webSocket.send(data)
             inputMessage.value = ""
             event.preventDefault();
