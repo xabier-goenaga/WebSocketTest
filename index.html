@@ -18,6 +18,8 @@
 
         webSocket.onmessage = (event) => {
             console.log(event)
+            let j = JSON.parse(event.data)
+            console.log(j)
             document.getElementById('messages').innerHTML +=
                 'Message from server: ' + event.data + "<br>";
         };

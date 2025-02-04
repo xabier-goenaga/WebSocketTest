@@ -19,9 +19,10 @@ sockserver.on('connection', ws => {
     ws.on('message', data => {
         sockserver.clients.forEach(client => {
             console.log(data)
-            console.log(JSON.parse(data))
+            let j = JSON.parse(data)
+            let data = `{"message": "${inputMessage.value}", "date": ${data.date}, "response": ${Date.now()}}`;
             console.log(`distributing message: ${data}`)
-            client.send(`Recievec ${data}, but 😎${data}😎 is cooler`)
+            client.send(`Recievec ${j.message}, but 😎${j.message}😎 is cooler`)
         })
     })
 
