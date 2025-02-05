@@ -11,7 +11,6 @@ const webserver = express()
 
 const { WebSocketServer } = require('ws')
 const sockserver = new WebSocketServer({ port: 443 })
-// const sockserver = new WebSocketServer({ host: "10.0.2.64", port: 443 })
 
 sockserver.on('connection', ws => {
     console.log('New client connected!')
